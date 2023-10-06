@@ -38,7 +38,9 @@ for rect, label in zip(rects, labels):
 ```
 
 # Data Table, Scatterplot- Transparent & Various Sizes, Scatterplot - Label Points
-
+![](docs/MaterialismAndGHG-Table.PNG)
+![](docs/MaterialismAndGHG-Scatterplot.PNG)
+![](docs/MaterialismAndGHG-Scatterplot-Labels.PNG)
 Python Code:
 ```
 import pandas as pd
