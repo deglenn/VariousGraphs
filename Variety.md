@@ -201,8 +201,8 @@ circos.trackPlotRegion(
 )
 ```
 
-# Line Graph with Propbalitiy Cones and Value Point data
-![](docs/2degRenewableNukeHighlighted.png)
+# Line Graph with Probalitiy Cones and Value Point data
+![](docs/2degRenewableNukeHighlighted.JPG)
 ```
 import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
