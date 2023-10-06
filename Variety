@@ -1,0 +1,40 @@
+# BarChart with Error Bars
+![](All_screenshots.jpg)
+
+Python Code:
+```
+import matplotlib.pyplot as plt
+import numpy as np
+
+#gal-H2O kWh−1
+water=[6.05,.74,.52,.49,.04,.001,.001,.001,.0001]
+errorbars=[1.55,0,.15,0,0,0,0,0,0]
+
+fuels=["Hydro", "CSP*", "Nuclear*", "Coal-CCS", "Solar-PV", "Geothermal", "Wind", "Wave", "Tidal"]
+
+index=np.arange(len(fuels)) + 0.3
+print(len(water),len(errorbars),len(index))
+
+#plt.figure()#figsize=(15, 10))
+#plt.bar(index,water)
+#plt.errorbar(index,errorbars)
+
+fig, ax = plt.subplots(figsize=(15, 10))
+ax.bar(index, water, yerr=errorbars, align='center', alpha=0.5, ecolor='gray', capsize=10)
+ax.set_xticks(index)
+ax.set_xticklabels(fuels, Fontsize=15)
+plt.yticks(fontsize=20)
+plt.ylabel("Gallons of Water per kWh", fontsize=25)
+plt.title("Water Needs of Various Electricity Sources", fontsize=25)
+
+rects = ax.patches
+labels = [f"{i}" for i in water]
+
+for rect, label in zip(rects, labels):
+    height = rect.get_height()
+    ax.text(
+        rect.get_x() + rect.get_width() / 2, height/2, label, ha="center", va="bottom", fontsize=15
+    )
+```
+
+
