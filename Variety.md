@@ -1,5 +1,5 @@
 # BarChart with Error Bars
-![](BarChartWithErrorBars.PNG)
+![](BarChartWithErrorBars.jpeg)
 
 Python Code:
 ```
