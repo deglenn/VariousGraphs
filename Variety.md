@@ -108,6 +108,8 @@ plt.yticks(fontsize=labels_s)
 ```
 
 # Chord Diagram
+![](MinJanTempBins-1418.png)
+
 R Code:
 ```
 install.packages("hrbrthemes")
