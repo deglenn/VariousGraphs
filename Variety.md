@@ -108,7 +108,7 @@ plt.yticks(fontsize=labels_s)
 ```
 
 # Chord Diagram
-![](MinJanTempBins-1418.png)
+![](docs/MinJanTempBins-1418.png)
 
 R Code:
 ```
@@ -202,7 +202,7 @@ circos.trackPlotRegion(
 ```
 
 # Line Graph with Propbalitiy Cones and Value Point data
-
+![](docs/2degRenewableNukeHighlighted.png)
 ```
 import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
@@ -279,7 +279,7 @@ print("55 Models")
 
 
 # Random Forest Variable Testing
-
+![](docs/RandomForestVariableTesting.PNG)
 Python code: 
 ```
 ###This is the one to use
@@ -367,7 +367,7 @@ fig.tight_layout()
 ```
 
 # Random Forest Variable Explanation
-
+![](docs/RandomForestVariableExplanation.PNG)
 ```
 import pandas as pd
 import numpy as np
