@@ -454,3 +454,205 @@ ax = plot_PDP('HomicideRate', X_train_reduced, reg)
 ax.set_xlabel('Homicide Rate')
 plt.tight_layout();
 ```
+
+# Make 10 vs. 30 year Temperature Gif
+![](docs/NepalTemp_Full_Rectangle.JPG)
+![](docs/NepalTemp_30y_Rectangle.JPG)
+![](docs/NepalTemp_10y_Rectangle.JPG)
+![](docs/NepalTemp_10y_Square.JPG)
+![](docs/NepalTemp_30y_Square.JPG)
+
+```
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# This makes out plots higher resolution, which makes them easier to see while building
+
+df = pd.read_csv('Nepal_ERA5_Annual_Tasmean_30yr.csv')
+df.head()
+
+year=df['Year']
+tempAll=df['1959-2021']
+temp1959=df['1959']
+###### Break Here in Jupyter ########## Nepal Full Time Series - Rectangular ######
+# Setup plot size.
+fig, ax = plt.subplots(figsize=(25,15))
+
+
+ax.plot(year, tempAll, color='mediumblue', marker='o', linestyle='solid', linewidth=4, markersize=12)
+
+#calculate equation for trendline
+z = np.polyfit(year, tempAll, 1)
+p = np.poly1d(z)
+
+#add trendline to plot
+ax.plot(year, p(year),color='mediumblue', linestyle='dotted',linewidth=3)
+
+plt.title("Nepal Average Annual Temperatue ($^{o}$C)",fontsize=36, weight='bold')
+
+# Reformat axis tick labels
+ax.xaxis.set_tick_params(labelsize=24)        # Set tick label size\'
+ax.yaxis.set_tick_params(labelsize=24)        # Set tick label size\'
+
+plt.savefig('Nepal_All.png')
+
+###### Break Here in Jupyter ########## Nepal 30 Years - Rectangular ######
+# Setup plot size.
+fig, ax = plt.subplots(figsize=(25,15))
+
+
+ax.plot(year, tempAll, color='gainsboro', marker='o', linestyle='solid',linewidth=4, markersize=12)
+
+#calculate equation for trendline
+z = np.polyfit(year, tempAll, 1)
+p = np.poly1d(z)
+
+#add trendline to plot
+ax.plot(year, p(year), color='gainsboro', linestyle='dotted',linewidth=3)
+
+plt.title("Nepal Average Annual Temperatue ($^{o}$C)",fontsize=36, weight='bold')
+
+# Reformat axis tick labels
+ax.xaxis.set_tick_params(labelsize=24)        # Set tick label size\'
+ax.yaxis.set_tick_params(labelsize=24)        # Set tick label size\'
+
+
+####Added Time Period
+i=33
+timePeriod=30
+yearShort=year[i:i+timePeriod]
+tempShort=tempAll[i:i+timePeriod]
+
+ax.plot(yearShort, tempShort, color='mediumblue', marker='o', linestyle='solid', linewidth=4, markersize=12)
+
+#calculate equation for trendline
+z = np.polyfit(yearShort, tempShort, 1)
+pShort = np.poly1d(z)
+
+#add trendline to plot
+ax.plot(yearShort, pShort(yearShort), color='mediumblue', linestyle='dotted',linewidth=3)
+
+plt.savefig('Nepal_30year_{}.png'.format(i+1))
+
+###### Break Here in Jupyter ########## Nepal 10 Years - Rectangular ######
+# Setup plot size.
+fig, ax = plt.subplots(figsize=(25,15))
+
+
+ax.plot(year, tempAll, color='gainsboro', marker='o', linestyle='solid',linewidth=4, markersize=12)
+
+#calculate equation for trendline
+z = np.polyfit(year, tempAll, 1)
+p = np.poly1d(z)
+
+#add trendline to plot
+ax.plot(year, p(year), color='gainsboro', linestyle='dotted',linewidth=3)
+
+plt.title("Nepal Average Annual Temperatue ($^{o}$C)",fontsize=36, weight='bold')
+
+# Reformat axis tick labels
+ax.xaxis.set_tick_params(labelsize=24)        # Set tick label size\'
+ax.yaxis.set_tick_params(labelsize=24)        # Set tick label size\'
+
+
+####Added Time Period
+i=46
+timePeriod=10
+yearShort=year[i:i+timePeriod]
+tempShort=tempAll[i:i+timePeriod]
+
+ax.plot(yearShort, tempShort, color='orangered', marker='o', linestyle='solid', linewidth=4, markersize=12)
+
+#calculate equation for trendline
+z = np.polyfit(yearShort, tempShort, 1)
+pShort = np.poly1d(z)
+
+#add trendline to plot
+ax.plot(yearShort, pShort(yearShort), color='orangered', linestyle='dotted',linewidth=3)
+
+plt.savefig('Nepal_10year_{}.png'.format(i+1))
+
+
+###### Break Here in Jupyter ########## Nepal 10 Years - Square ######
+# Setup plot size.
+fig, ax = plt.subplots(figsize=(15,15))
+
+ax.plot(year, tempAll, color='gainsboro', marker='o', linestyle='solid',linewidth=4, markersize=12)
+
+#calculate equation for trendline
+z = np.polyfit(year, tempAll, 1)
+p = np.poly1d(z)
+
+#add trendline to plot
+ax.plot(year, p(year), color='gainsboro', linestyle='dotted',linewidth=3)
+
+plt.title("Nepal Average Annual Temperature ($^{o}$C)",fontsize=38, weight='bold')
+
+# Reformat axis tick labels
+ax.xaxis.set_tick_params(labelsize=24)        # Set tick label size\'
+ax.yaxis.set_tick_params(labelsize=24)        # Set tick label size\'
+
+####Added Time Period
+i=53
+timePeriod=10
+yearShort=year[i:i+timePeriod]
+tempShort=tempAll[i:i+timePeriod]
+
+ax.plot(yearShort, tempShort, color='orangered', marker='o', linestyle='solid', linewidth=4, markersize=12)
+
+#calculate equation for trendline
+z = np.polyfit(yearShort, tempShort, 1)
+pShort = np.poly1d(z)
+
+#add trendline to plot
+ax.plot(yearShort, pShort(yearShort), color='orangered', linestyle='dotted',linewidth=3)
+
+ax.text(2003, 12, '10 Years', size=38, fontweight='bold', color='orangered')
+
+plt.savefig('Nepal_Sq_Text_10year_{}.png'.format(i+1))
+
+###### Break Here in Jupyter ########## Nepal 30 Years - Square ######
+# Setup plot size.
+fig, ax = plt.subplots(figsize=(15,15))
+
+
+ax.plot(year, tempAll, color='gainsboro', marker='o', linestyle='solid',linewidth=4, markersize=12)
+
+#calculate equation for trendline
+z = np.polyfit(year, tempAll, 1)
+p = np.poly1d(z)
+
+#add trendline to plot
+ax.plot(year, p(year), color='gainsboro', linestyle='dotted',linewidth=3)
+
+plt.title("Nepal Average Annual Temperature ($^{o}$C)",fontsize=38, weight='bold')
+
+# Reformat axis tick labels
+ax.xaxis.set_tick_params(labelsize=24)        # Set tick label size\'
+ax.yaxis.set_tick_params(labelsize=24)        # Set tick label size\'
+
+
+####Added Time Period
+i=33
+timePeriod=30
+yearShort=year[i:i+timePeriod]
+tempShort=tempAll[i:i+timePeriod]
+
+ax.plot(yearShort, tempShort, color='mediumblue', marker='o', linestyle='solid', linewidth=4, markersize=12)
+
+#calculate equation for trendline
+z = np.polyfit(yearShort, tempShort, 1)
+pShort = np.poly1d(z)
+
+#add trendline to plot
+ax.plot(yearShort, pShort(yearShort), color='mediumblue', linestyle='dotted',linewidth=3)
+
+ax.text(2003, 12, '30 Years', size=38, fontweight='bold', color='mediumblue')
+
+plt.savefig('Nepal_Sq_Text_30year_{}.png'.format(i+1))
+
+###### Break Here in Jupyter ##########
+print(yearShort)
+```
+
